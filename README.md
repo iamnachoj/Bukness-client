@@ -1,5 +1,5 @@
-# myFlix-client
- Client-side block for MyFlix application built out of several React components that makes the application fast, asynchronous and very fluid. It mainly supports the UI for clients to access myFlix Rest API. 
+# Bukness-client
+ Client-side block for Bukness application built out of several React components that makes the application fast, asynchronous and very fluid. It mainly supports the UI for clients to access myFlix Rest API. 
 
 # Tools
 React.js 

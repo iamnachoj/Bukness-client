@@ -4,22 +4,22 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
-import { MovieCard } from '../movie-card/movie-card';
+import { BookCard } from '../book-card/book-card';
 
 const mapStateToProps = state => {
   const { visibilityFilter } = state;
   return { visibilityFilter };
 };
 
-function MoviesList(props) {
-  const { movies, visibilityFilter } = props;
-  let filteredMovies = movies;
+function BooksList(props) {
+  const { books, visibilityFilter } = props;
+  let filteredBooks = books;
   
   if (visibilityFilter !== '') {
-    filteredMovies = movies.filter(m => m.Title.toLowerCase().includes(visibilityFilter.toLowerCase()));
+    filteredBooks = books.filter(m => m.Title.toLowerCase().includes(visibilityFilter.toLowerCase()));
   }
 
-  if (!movies) return <div className="main-view">Oops, seems like that movie is not on our list :(</div>;
+  if (!books) return <div className="main-view">Oops, seems like that book is not on our list :(</div>;
 
  return <>
     <Col> <Link to='/my-profile'><Button style={{ margin: '1em' }}>My Profile</Button></Link> </Col>
@@ -28,10 +28,10 @@ function MoviesList(props) {
     <Col md={9}  style={{ margin: '1em' }}> 
      <VisibilityFilterInput visibilityFilter={visibilityFilter}  />
     </Col>
-   {filteredMovies.map(m => (
-   <Col sm={12} md={6} lg={4}><MovieCard movie={m} key={m._id}/></Col>
+   {filteredBooks.map(b => (
+   <Col sm={12} md={6} lg={4}><BookCard book={b} key={b._id}/></Col>
    ))}
   </>;
 }
 
-export default connect(mapStateToProps)(MoviesList);
+export default connect(mapStateToProps)(BooksList);

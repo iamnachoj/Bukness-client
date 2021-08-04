@@ -10,16 +10,16 @@ import {Row, Col, Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
 //CSS
-import './movie-view.scss';
+import './book-view.scss';
 
-//MovieView Component
-export class MovieView extends React.Component{
+//BookView Component
+export class BookView extends React.Component{
  
   addFavorite() {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('Name');
-
-    axios.post(`https://myflix-lounge.herokuapp.com/users/${username}/movies/${this.props.movie._id}`, {}, {
+    
+    axios.post(`https://bukness-app.herokuapp.com/users/${username}/books/${this.props.book._id}`, {}, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(response => {
@@ -31,33 +31,33 @@ export class MovieView extends React.Component{
   };
 
  render(){
-   const { movie, onBackClick } = this.props;
+   const { book, onBackClick } = this.props;
    return (
-     <Row className="movie-view">
+     <Row className="book-view">
       <Col sm={12} md={7} className="text-center">
-        <div className="movie-poster">
-         <img src={movie.imagePath} />
+        <div className="book-poster">
+         <img src={book.imagePath} />
         </div>
       </Col>
       <Col className="info">
-       <div className="movie-title">
+       <div className="book-title">
          <span className="label">Title: </span>
-         <span className="value">{movie.Title}</span>
+         <span className="value">{book.Title}</span>
        </div>
-       <div className="movie-description">
+       <div className="book-description">
          <span className="label">Description: </span>
-         <span className="value">{movie.Description}</span>
+         <span className="value">{book.Description}</span>
        </div>
-       <div className="movie-director">
-         <span className="label">Director: </span>
-         <Link to={"/director/" + movie.Director.Name}><span className="value">{movie.Director.Name}</span></Link>
+       <div className="book-author">
+         <span className="label">Author: </span>
+         <Link to={"/author/" + book.Author.Name}><span className="value">{book.Author.Name}</span></Link>
        </div>
-       <div className="movie-genre">
+       <div className="book-genre">
          <span className="label">Genre: </span>
-         <Link to={"/genre/" + movie.Genre.Name}><span className="value">{movie.Genre.Name}</span></Link>
+         <Link to={"/genre/" + book.Genre.Name}><span className="value">{book.Genre.Name}</span></Link>
        </div>
        <Button onClick={()=> onBackClick()}>Back</Button>
-       <Button variant='info' className="fav-button" value={movie._id} onClick={(e) => this.addFavorite(e, movie)}>
+       <Button variant='info' className="fav-button" value={book._id} onClick={(e) => this.addFavorite(e, book)}>
           Add to Favorites
         </Button>
       </Col>
@@ -67,8 +67,8 @@ export class MovieView extends React.Component{
 }
 
 //Proptypes
-MovieView.propTypes = {
-  movie: PropTypes.shape({
+BookView.propTypes = {
+  book: PropTypes.shape({
     Title: PropTypes.string,
     Description: PropTypes.string,
     ImagePath: PropTypes.string

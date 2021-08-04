@@ -24,7 +24,7 @@ export function RegistrationView(props) {
     setValidated(true);
     e.preventDefault();
     console.log(username, password, email, birthdate);
-    axios.post('https://myflix-lounge.herokuapp.com/users', {
+    axios.post('https://bukness-app.herokuapp.com/users', {
       Name: username,
       Password: password,
       Email: email,

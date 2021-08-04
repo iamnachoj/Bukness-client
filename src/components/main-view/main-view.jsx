@@ -5,17 +5,17 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 //React Redux
 import { connect } from 'react-redux';
-import { setMovies } from '../../actions/actions';
+import { setBooks } from '../../actions/actions';
 import { setUser } from '../../actions/actions';
 
 //React Components
 import { LoginView } from '../login-view/login-view';
-import { MovieView } from '../movie-view/movie-view';
+import { BookView } from '../book-view/book-view';
 import { RegistrationView } from "../registration-view/registration-view";
-import { DirectorView } from '../director-view/director-view';
+import { AuthorViwew } from '../author-view/author-view';
 import { ProfileView } from '../profile-view/profile-view';
 import { GenreView } from '../genre-view/genre-view';
-import MoviesList from '../movies-list/movies-list';
+import BooksList from '../books-list/books-list';
 
 //React Bootstrap
 import { Row, Col } from 'react-bootstrap';
@@ -29,11 +29,11 @@ class MainView extends React.Component {
 
   //Methods
   
-  getMovies(token){
+  getBooks(token){
     axios
-      .get('https://myflix-lounge.herokuapp.com/API/Movies', {headers: { Authorization: `Bearer ${token}`}})
+      .get('https://bukness-app.herokuapp.com/API/Books', {headers: { Authorization: `Bearer ${token}`}})
       .then(response => {
-        this.props.setMovies(response.data);
+        this.props.setBooks(response.data);
       })
       .catch(error => {
         console.log(error);
@@ -44,13 +44,13 @@ class MainView extends React.Component {
     this.props.setUser(authData.user.Name);
     localStorage.setItem('token', authData.token);
     localStorage.setItem('Name', authData.user.Name);
-    this.getMovies(authData.token);
+    this.getBooks(authData.token);
   }
 
 
   //Render method
   render() {
-    let { movies, user } = this.props
+    let { books, user } = this.props
 
     return (
       <Router> 
@@ -58,8 +58,7 @@ class MainView extends React.Component {
            { /* All Routes */}
           <Route exact path="/" render={() => {            
             if (!user) return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
-            if (movies === []) return <MainView> loading... </MainView>
-            return <MoviesList key={movies._id} movies={movies}/>
+            return <BooksList key={books._id} books={books}/>
             }
            } />
 
@@ -70,29 +69,29 @@ class MainView extends React.Component {
           }} />
 
 
-          <Route path="/movies/:movieId" render={({ match, history }) => {
+          <Route path="/books/:bookId" render={({ match, history }) => {
             if (!user) return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
             return <Col md={8}>
-              <MovieView movie={movies.find(movie => movie._id === match.params.movieId)} onBackClick={() => history.goBack()} /></Col>
+              <BookView book={books.find(book => book._id === match.params.bookId)} onBackClick={() => history.goBack()} /></Col>
           }} />
 
 
-          <Route path="/director/:name" render={({match, history}) => {
+          <Route path="/author/:name" render={({match, history}) => {
             if (!user) return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
             return <Col md={8}>
-               <DirectorView movie={movies.find(movie => movie.Director.Name === match.params.name)} onBackClick={() => history.goBack()}/></Col>
+               <AuthorView book={books.find(book => book.Author.Name === match.params.name)} onBackClick={() => history.goBack()}/></Col>
           }} />
 
           <Route path="/genre/:name" render={({match, history}) => {
             if (!user) return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
             return <Col md={8}>
-               <GenreView movie={movies.find(movie => movie.Genre.Name === match.params.name)} onBackClick={() => history.goBack()}/></Col>
+               <GenreView book={books.find(book => book.Genre.Name === match.params.name)} onBackClick={() => history.goBack()}/></Col>
           }}/>
 
           <Route path="/my-profile" render={({ history}) => {
             if (!user) return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
             return <Col md={8}>
-               <ProfileView user={user} movies={movies} onBackClick={() => history.goBack()}/></Col>
+               <ProfileView user={user} books={books} onBackClick={() => history.goBack()}/></Col>
           }}/>
 
         </Row>
@@ -104,15 +103,15 @@ class MainView extends React.Component {
     let accessToken = localStorage.getItem("token");
     if (accessToken !== null) {
         this.props.setUser(localStorage.getItem("Name"))
-      this.getMovies(accessToken);
+      this.getBooks(accessToken);
     }
   }
   
 }
 
 let mapStateToProps = state => {
-  return { movies: state.movies,
+  return { books: state.books,
   user: state.user }
 }
 
-export default connect(mapStateToProps, { setMovies, setUser } )(MainView);
+export default connect(mapStateToProps, { setBooks, setUser } )(MainView);

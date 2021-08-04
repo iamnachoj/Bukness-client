@@ -18,7 +18,7 @@ export class ProfileView extends React.Component{
       Password: null,
       Email: null, 
       Birthday: null,
-      FavouriteMovies: [],
+      FavouriteBooks: [],
       validated: null    
     };
   }
@@ -34,7 +34,7 @@ export class ProfileView extends React.Component{
   }
   //GET method 
   getUser(token) {
-    let url = 'https://myflix-lounge.herokuapp.com/users/' + localStorage.getItem('Name');
+    let url = 'https://bukness-app.herokuapp.com/users/' + localStorage.getItem('Name');
     axios
         .get(url, {
             headers: { Authorization: `Bearer ${token}` },
@@ -45,7 +45,7 @@ export class ProfileView extends React.Component{
                 Password: response.data.Password,
                 Email: response.data.Email,
                 Birthday: response.data.Birthday,
-                FavouriteMovies: response.data.FavouriteMovies
+                FavouriteBooks: response.data.FavouriteBooks
             });
         });   
   }
@@ -70,7 +70,7 @@ export class ProfileView extends React.Component{
       const token = localStorage.getItem('token');
       const username = localStorage.getItem('Name');
 
-      axios.put(`https://myflixbypartearroyo.herokuapp.com/users/${username}`, {
+      axios.put(`https://bukness-app.herokuapp.com/users/${username}`, {
         headers: { Authorization: `Bearer ${token}` },
         data: {
           Name: newName ? newName : this.state.Name,
@@ -114,17 +114,17 @@ export class ProfileView extends React.Component{
     this.Birthdate = input;
   }
   
-  // DELETE Favourite Movies 
-  removeFavouriteMovie(e, movie) {
+  // DELETE Favourite Books 
+  removeFavouriteBook(e, book) {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('Name');
 
     axios
-      .delete(`https://myflix-lounge.herokuapp.com/users/${username}/movies/${movie._id}`, {
+      .delete(`https://bukness-app.herokuapp.com/users/${username}/books/${book._id}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => {
-        alert('Movie was removed');
+        alert('Book was removed');
         this.componentDidMount();
       })
       .catch(function (error) {
@@ -138,7 +138,7 @@ export class ProfileView extends React.Component{
 
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('user');
-    let url = 'https://myflix-lounge.herokuapp.com/users/' + localStorage.getItem('Name');
+    let url = 'https://bukness-app.herokuapp.com/users/' + localStorage.getItem('Name');
 
     axios.delete(url, {
       headers: { Authorization: `Bearer ${token}` },
@@ -155,8 +155,8 @@ export class ProfileView extends React.Component{
   }
 
   render(){
-    const { FavouriteMovies, validated } = this.state;
-    const { user, onBackClick, movies } = this.props;
+    const { FavouriteBooks, validated } = this.state;
+    const { user, onBackClick, books } = this.props;
     return(
       <>  
      <Card className="profile-card">
@@ -180,19 +180,19 @@ export class ProfileView extends React.Component{
              </Col>
             </Row>
       </Card>
-      <Card className="favmovie-card">
-          <Card.Title className="center"><h3>Favourite Movies</h3></Card.Title>
-         {FavouriteMovies.length === 0 && <div className="text-center">Empty.</div>}
-          <div className="favourites-movies ">
-            {FavouriteMovies.length > 0 &&
-               movies.map((movie) => {
-                 if (movie._id === FavouriteMovies.find((favMovie) => favMovie === movie._id)) {
+      <Card className="favbook-card">
+          <Card.Title className="center"><h3>Favourite Books</h3></Card.Title>
+         {FavouriteBooks.length === 0 && <div className="text-center">Empty.</div>}
+          <div className="favourites-books ">
+            {FavouriteBooks.length > 0 &&
+               books.map((book) => {
+                 if (book._id === FavouriteBooks.find((favBook) => favBook === book._id)) {
                    return (
-                    <CardDeck key={movie._id} className="movie-card-deck">
-                      <Card className="favourites-item card-content" style={{ width: '16rem' }} key={movie._id}>
+                    <CardDeck key={book._id} className="book-card-deck">
+                      <Card className="favourites-item card-content" style={{ width: '16rem' }} key={book._id}>
                       <Card.Body>
-                       <Card.Title className="movie-card-title">{movie.Title}</Card.Title>
-                      <Button size='sm' className='profile-button remove-favourite' variant='danger' value={movie._id} onClick={(e) => this.removeFavouriteMovie(e, movie)}>
+                       <Card.Title className="book-card-title">{book.Title}</Card.Title>
+                      <Button size='sm' className='profile-button remove-favourite' variant='danger' value={book._id} onClick={(e) => this.removeFavouriteBook(e, book)}>
                         Remove
                        </Button>
                      </Card.Body>

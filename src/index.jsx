@@ -14,11 +14,11 @@ import './index.scss';
 //React-Redux for state control
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import movieApp from './reducers/reducers'
+import bookApp from './reducers/reducers'
 import { devToolsEnhancer } from 'redux-devtools-extension';
 
-//create state store (redux) and use movieApp reducer in it
-const store = createStore(movieApp, devToolsEnhancer());
+//create state store (redux) and use bookApp reducer in it
+const store = createStore(bookApp, devToolsEnhancer());
 
 // Main component (will use all the others)
 class MyFlixApplication extends React.Component {

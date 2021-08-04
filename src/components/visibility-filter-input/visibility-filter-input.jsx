@@ -8,7 +8,7 @@ import { setFilter } from '../../actions/actions';
 //function component Visibility Filter Input
 function VisibilityFilterInput(props){
  return (
-   <Form.Control onChange={e => props.setFilter(e.target.value)} value={props.VisibilityFilter} placeholder='filter movies'/>
+   <Form.Control onChange={e => props.setFilter(e.target.value)} value={props.VisibilityFilter} placeholder='filter books'/>
  )
    //it has no state and doesn’t need lifecycle Hooks
 }

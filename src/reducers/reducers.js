@@ -12,7 +12,7 @@ function visibilityFilter(state = '', action) {
   }
 }
 
-function movies(state = [], action){
+function books(state = [], action){
   switch (action.type) {
     case SET_MOVIES:
        return action.value;
@@ -33,19 +33,19 @@ function user(state = '', action) {
 
 /* Combined reducer that splits into two smaller reducers. */
 
-// function moviesApp( state = {}, action){
+// function booksApp( state = {}, action){
 //   return {
 //     visibilityFilter: visibilityFilter(state.visibilityFilter, action),
-//     movies: movies(state.movies, action)
+//     books: books(state.books, action)
 //   }
 // }
 
 /* more elegantly, we use the built-in redux function 'combineReducers()', but it means the same than before */
 
-const movieApp = combineReducers({
+const bookApp = combineReducers({
   visibilityFilter,
-  movies,
+  books,
   user
 });
 
-export default movieApp;
+export default bookApp;

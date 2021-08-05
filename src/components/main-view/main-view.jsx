@@ -53,6 +53,8 @@ class MainView extends React.Component {
   //Render method
   render() {
     let { books, user } = this.props
+    // 1. we are returning the NAVBAR together on each Router. So there is a container fluid that spans both the navbar and the component desired, and another container
+    //encapsulating just  the component wanted, to leave the fluidity just to the navbar, and keep room for the rest.
 
     return (
       <Router> 
@@ -60,7 +62,7 @@ class MainView extends React.Component {
            { /* All Routes */}
         <Route exact path="/" render={() => {            
             if (!user) return <Container><Col><LoginView onLoggedIn={(user) => this.onLoggedIn(user)} /></Col></Container>;
-            return (
+            return ( //2. here you can see it, container fluid to cover navbar and container no fluid, and container no fluid to cover the booklist
             <Container fluid>
             <NavbarView user={user}></NavbarView>
             <Container><Row><BooksList key={books._id} books={books}/></Row></Container>
@@ -89,15 +91,22 @@ class MainView extends React.Component {
 
           <Route path="/author/:name" render={({match, history}) => {
             if (!user) return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
-            return <Col md={8}>
-               <AuthorView book={books.find(book => book.Author.Name === match.params.name)} onBackClick={() => history.goBack()}/>
-                   </Col>
+            return (
+            <Container fluid>
+            <NavbarView user={user}></NavbarView>
+            <Container><Col md={8}><AuthorView book={books.find(book => book.Author.Name === match.params.name)} onBackClick={() => history.goBack()}/> </Col></Container>
+            </Container>
+            )
           }} />
 
           <Route path="/genre/:name" render={({match, history}) => {
             if (!user) return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
-            return <Col md={8}>
-               <GenreView book={books.find(book => book.Genre.Name === match.params.name)} onBackClick={() => history.goBack()}/></Col>
+            return (
+            <Container fluid>
+            <NavbarView user={user}></NavbarView>
+            <Container><Col md={8}> <GenreView book={books.find(book => book.Genre.Name === match.params.name)} onBackClick={() => history.goBack()}/></Col></Container>
+            </Container>
+            )
           }}/>
 
           <Route path="/my-profile" render={({ history}) => {

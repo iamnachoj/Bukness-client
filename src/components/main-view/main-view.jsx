@@ -78,8 +78,12 @@ class MainView extends React.Component {
 
           <Route path="/books/:bookId" render={({ match, history }) => {
             if (!user) return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
-            return <Col md={8}>
-              <BookView book={books.find(book => book._id === match.params.bookId)} onBackClick={() => history.goBack()} /></Col>
+            return (
+            <Container fluid>
+            <NavbarView user={user}></NavbarView>
+            <Container><BookView book={books.find(book => book._id === match.params.bookId)} onBackClick={() => history.goBack()} /></Container>
+            </Container>
+            )
           }} />
 
 

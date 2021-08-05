@@ -175,7 +175,7 @@ export class ProfileView extends React.Component{
                <span className="label">Birthdate: </span>
                <span className="value">{this.state.Birthday}</span>
              </div>
-              <Button className="back-button" onClick={() => onBackClick()}>Back</Button>
+              <Button className="back-button" href="/">Back</Button>
               <a href="/"><Button variant="secondary"className="logout-button" onClick={()=>{this.onLoggedOut()}}>Log out</Button></a>
              </Col>
             </Row>

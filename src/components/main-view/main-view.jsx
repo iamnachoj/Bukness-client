@@ -62,7 +62,7 @@ class MainView extends React.Component {
             if (!user) return <Container><Col><LoginView onLoggedIn={(user) => this.onLoggedIn(user)} /></Col></Container>;
             return (
             <Container fluid>
-            <NavbarView></NavbarView>
+            <NavbarView user={user}></NavbarView>
             <Container><Row><BooksList key={books._id} books={books}/></Row></Container>
             </Container>
             )

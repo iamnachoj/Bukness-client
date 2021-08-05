@@ -186,7 +186,7 @@ export class ProfileView extends React.Component{
 
       {/* Favourited books */}
       <Card className="favbook-card">
-          <Card.Title className="center"><h3>Favourite Books</h3></Card.Title>
+          <Card.Title className="favbook-title"><h3>Favourite Books</h3></Card.Title>
                 {FavouriteBooks.length === 0 && <div className="text-center">Empty.</div>}
                  <div className="favourites-books ">
                       {FavouriteBooks.length > 0 &&
@@ -196,7 +196,7 @@ export class ProfileView extends React.Component{
                                <CardDeck key={book._id} className="book-card-deck">
                                  <Card className="favourites-item card-content" style={{ width: '16rem' }} key={book._id}>
                                    <Card.Body>
-                                    <Card.Title className="book-card-title">{book.Title}</Card.Title>
+                                    <h5 className="book-card-title">{book.Title}</h5>
                                     <Button size='sm' className='profile-button remove-favourite' variant='danger' value={book._id} onClick={(e) => this.removeFavouriteBook(e, book)}>Remove</Button>
                                    </Card.Body>
                                   </Card>

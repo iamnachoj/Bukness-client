@@ -111,8 +111,12 @@ class MainView extends React.Component {
 
           <Route path="/my-profile" render={({ history}) => {
             if (!user) return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
-            return <Col md={8}>
-               <ProfileView user={user} books={books} onBackClick={() => history.goBack()}/></Col>
+            return (
+            <Container fluid>
+            <NavbarView user={user}></NavbarView>
+            <Container><Col md={12}><ProfileView user={user} books={books} onBackClick={() => history.goBack()}/></Col></Container>
+            </Container>
+            )
           }}/>
 
         </Row>

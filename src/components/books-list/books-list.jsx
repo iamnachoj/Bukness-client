@@ -23,7 +23,7 @@ function BooksList(props) {
 
  return <>
      {/* this Column is missing a key */}
-    <Col md={9}  style={{ margin: '1em' }}> 
+    <Col md={12}  style={{ margin: '1em' }}> 
      <VisibilityFilterInput visibilityFilter={visibilityFilter}  />
     </Col>
    {filteredBooks.map(b => (

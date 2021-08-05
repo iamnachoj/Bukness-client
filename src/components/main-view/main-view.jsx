@@ -34,6 +34,7 @@ class MainView extends React.Component {
       .get('https://bukness-app.herokuapp.com/API/Books', {headers: { Authorization: `Bearer ${token}`}})
       .then(response => {
         this.props.setBooks(response.data);
+        console.log(response.data)
       })
       .catch(error => {
         console.log(error);

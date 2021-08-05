@@ -13,3 +13,12 @@
   text-overflow: ellipsis ;
   overflow: hidden;
 }
+
+@media screen and (max-width: 768px) {
+  .book-card {
+    height: 750.1px;
+  }
+  .img-book{
+    height: 580px;
+  }
+}

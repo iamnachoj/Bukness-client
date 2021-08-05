@@ -9,6 +9,7 @@ import { setBooks } from '../../actions/actions';
 import { setUser } from '../../actions/actions';
 
 //React Components
+import { NavbarView } from '../navbar-view/navbar-view';
 import { LoginView } from '../login-view/login-view';
 import { BookView } from '../book-view/book-view';
 import { RegistrationView } from "../registration-view/registration-view";
@@ -18,7 +19,7 @@ import { GenreView } from '../genre-view/genre-view';
 import BooksList from '../books-list/books-list';
 
 //React Bootstrap
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 
 //Main-view CSS
 import './main-view.scss';
@@ -57,11 +58,16 @@ class MainView extends React.Component {
       <Router> 
       <Row className="main-view justify-content-md-center">
            { /* All Routes */}
-          <Route exact path="/" render={() => {            
-            if (!user) return <Col><LoginView onLoggedIn={(user) => this.onLoggedIn(user)} /></Col>;
-            return <BooksList key={books._id} books={books}/>
-            }
-           } />
+        <Route exact path="/" render={() => {            
+            if (!user) return <Container><Col><LoginView onLoggedIn={(user) => this.onLoggedIn(user)} /></Col></Container>;
+            return (
+            <Container fluid>
+            <NavbarView></NavbarView>
+            <Container><Row><BooksList key={books._id} books={books}/></Row></Container>
+            </Container>
+            )
+          }
+        } />
 
 
           <Route path="/register" render={() => {

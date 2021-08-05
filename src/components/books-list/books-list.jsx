@@ -1,5 +1,5 @@
 import React from 'react';
-import {Col, Button} from 'react-bootstrap';
+import {Row, Col, Button} from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -23,7 +23,6 @@ function BooksList(props) {
 
  return <>
     <Col> <Link to='/my-profile'><Button style={{ margin: '1em' }}>My Profile</Button></Link> </Col>
-    
      {/* this Column is missing a key */}
     <Col md={9}  style={{ margin: '1em' }}> 
      <VisibilityFilterInput visibilityFilter={visibilityFilter}  />

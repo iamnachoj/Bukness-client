@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 
 //mainView component
 import MainView from './components/main-view/main-view';
+import {NavbarView} from './components/navbar-view/navbar-view';
 
 //react-bootstrap
 import Container from 'react-bootstrap/Container'
@@ -25,9 +26,7 @@ class MyFlixApplication extends React.Component {
   render() {
     return (
       <Provider store={store}> 
-       <Container>
          <MainView/>
-       </Container>
       </Provider>
        );
   }

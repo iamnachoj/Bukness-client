@@ -186,7 +186,7 @@ export class ProfileView extends React.Component{
 
       {/* Favourited books */}
       <Card className="favbook-card">
-          <Card.Title className="favbook-title"><h3>Favourite Books</h3></Card.Title>
+          <Card.Title className="card-title"><h3>Favourite Books</h3></Card.Title>
                 {FavouriteBooks.length === 0 && <div className="text-center">Empty.</div>}
                  <div className="favourites-books ">
                       {FavouriteBooks.length > 0 &&
@@ -208,9 +208,9 @@ export class ProfileView extends React.Component{
                  </div>
        </Card>
        <Card> 
-          <h2 className="center">Update Profile</h2>
+          <h2 className="card-title">Update Profile</h2>
           <Card.Body>
-            <Form noValidate validated={validated} className="update-form" onSubmit={(e) => this.handleUpdate(e, this.Name, this.Password, this.Email, this.Birthdate)}>
+            <Form className="update-form" noValidate validated={validated} onSubmit={(e) => this.handleUpdate(e, this.Name, this.Password, this.Email, this.Birthdate)}>
 
               <Form.Group controlId="formName">
                 <Form.Label className="form-label">Name</Form.Label>
@@ -240,7 +240,7 @@ export class ProfileView extends React.Component{
             </Form>
           </Card.Body>
        </Card>
-       <Card className="delete-card center">
+       <Card className="card-title">
          <Card.Title><h3>Delete your Account</h3></Card.Title>
          <Card.Body>
                 <Button variant='danger' onClick={(e) => this.handleDeleteUser(e)}>

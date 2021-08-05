@@ -8,15 +8,19 @@
 .favbook-card{
   margin: 3rem 0;
 }
-.favbook-title{
+.card-title{
   margin: 1rem;
-}
-.delete-card{
-  margin: 3rem 0;
 }
 .book-card-title{
   display: inline;
+  margin-right: 0;
 }
 .remove-favourite{
   float: right;
+}
+.update-form{
+  margin-top: 0;
+}
+.favourites-item{
+  min-width: 352px;
 }

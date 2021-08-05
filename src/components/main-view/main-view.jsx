@@ -12,7 +12,7 @@ import { setUser } from '../../actions/actions';
 import { LoginView } from '../login-view/login-view';
 import { BookView } from '../book-view/book-view';
 import { RegistrationView } from "../registration-view/registration-view";
-import { AuthorViwew } from '../author-view/author-view';
+import { AuthorView } from '../author-view/author-view';
 import { ProfileView } from '../profile-view/profile-view';
 import { GenreView } from '../genre-view/genre-view';
 import BooksList from '../books-list/books-list';
@@ -80,7 +80,8 @@ class MainView extends React.Component {
           <Route path="/author/:name" render={({match, history}) => {
             if (!user) return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
             return <Col md={8}>
-               <AuthorView book={books.find(book => book.Author.Name === match.params.name)} onBackClick={() => history.goBack()}/></Col>
+               <AuthorView book={books.find(book => book.Author.Name === match.params.name)} onBackClick={() => history.goBack()}/>
+                   </Col>
           }} />
 
           <Route path="/genre/:name" render={({match, history}) => {

@@ -58,7 +58,7 @@ class MainView extends React.Component {
       <Row className="main-view justify-content-md-center">
            { /* All Routes */}
           <Route exact path="/" render={() => {            
-            if (!user) return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
+            if (!user) return <Col><LoginView onLoggedIn={(user) => this.onLoggedIn(user)} /></Col>;
             return <BooksList key={books._id} books={books}/>
             }
            } />

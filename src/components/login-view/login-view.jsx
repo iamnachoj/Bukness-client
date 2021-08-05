@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from "prop-types";
 import './login-view.scss';
-
-
+import bukness from "../../../Public/img/Bukness.png"
 //React-bootstrap
 import { Form, Button, Row, Col } from 'react-bootstrap';
 
@@ -37,28 +36,31 @@ export function LoginView(props) {
   };
 
   return (
-    <>
-      <Col></Col>
-      <Col>
-       <Form noValidate validated={validated} onSubmit={handleSubmit}>
-        <Form.Group>
+    <>  
+        <Row><img className="logo-login" src={bukness}/></Row>
+        <Row><Col sm={3} md={3} lg={4}></Col>
+        <Col>
+         <Form noValidate validated={validated} onSubmit={handleSubmit}>
+         <Form.Group>
           <Form.Label className="username"> Username:</Form.Label>
           <Form.Control required type="text" placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)}/>
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           <Form.Control.Feedback type="invalid">Please choose a username.</Form.Control.Feedback>
-        </Form.Group>
-        <Form.Group>
-          <Form.Label className="password"> Password:</Form.Label>
-          <Form.Control required type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-          <Form.Control.Feedback type="invalid">Please don't forget your password.</Form.Control.Feedback>
-        </Form.Group>
+         </Form.Group>
+         <Form.Group>
+           <Form.Label className="password"> Password:</Form.Label>
+           <Form.Control required type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+           <Form.Control.Feedback type="invalid">Please don't forget your password.</Form.Control.Feedback>
+         </Form.Group>
         <Row>
            <Col><Button variant="primary" type="submit" onClick={handleSubmit}>Submit</Button></Col>
            <Col xs={12} md={8}><p>Not an user? register <Link to={"/register"}>here</Link></p></Col>
         </Row>
        </Form>
       </Col>
-      <Col></Col>
+      <Col sm={3} md={3} lg={4}></Col>
+      </Row>
+        
     </>
   );
 }

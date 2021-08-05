@@ -22,7 +22,6 @@ function BooksList(props) {
   if (!books) return <div className="main-view">Oops, seems like that book is not on our list :(</div>;
 
  return <>
-    <Col> <Link to='/my-profile'><Button style={{ margin: '1em' }}>My Profile</Button></Link> </Col>
      {/* this Column is missing a key */}
     <Col md={9}  style={{ margin: '1em' }}> 
      <VisibilityFilterInput visibilityFilter={visibilityFilter}  />

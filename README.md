@@ -35,4 +35,4 @@ It is also possible to delete the account and to update the user name or passwor
  - From your Command Line Interface, 'cd' into the folder and run the first package.json script: ```'npm start' ```. It will launch parcel and bundle up the code.
  - Once budled up, it will serve the file on port 1234. Run it from the browser, and the site will be there 
  
-### See demo here: <a href="#notYetAvailable">MyFlix App</a>
+### See demo here: <a href="#notYetAvailable">Bukness App</a>

@@ -17,6 +17,7 @@ import { AuthorView } from '../author-view/author-view';
 import { ProfileView } from '../profile-view/profile-view';
 import { GenreView } from '../genre-view/genre-view';
 import BooksList from '../books-list/books-list';
+import {Footer} from '../footer/footer';
 
 //React Bootstrap
 import { Row, Col, Container } from 'react-bootstrap';

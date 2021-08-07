@@ -26,8 +26,8 @@ function BooksList(props) {
     <Col md={12}  style={{ margin: '1em' }}> 
      <VisibilityFilterInput visibilityFilter={visibilityFilter}  />
     </Col>
-   {filteredBooks.map(b => (
-   <Col sm={12} md={6} lg={4}><BookCard book={b} key={b._id}/></Col>
+   {filteredBooks.map(b => ( 
+   <Col key={b._id} sm={12} md={6} lg={4}><BookCard book={b} /></Col>
    ))}
   </>;
 }

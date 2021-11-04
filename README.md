@@ -1,6 +1,6 @@
 # Bukness App
 
-Client-side block for BuknessApp, a Single Page Appication (SPA) for people who want the help of books to boost their professional career, where they can scroll through many different books about business, personal growth, emotional intelligence, self-help, motivational... and see information about them, like their descriptions, genres, authors etc.
+Client-side block for BuknessApp, a Single Page Appication (SPA) for people who want the help of books to boost their professional career in TECH. They can scroll through many different books about relevant topics such as the IT industry, business, personal growth, emotional intelligence, self-help, motivational... and see information about them, like their descriptions, genres, authors etc.
 
 Built out of several React components, the app runs fast, asynchronous and very fluid. 
  

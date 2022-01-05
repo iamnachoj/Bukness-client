@@ -11,7 +11,7 @@ React.js
  - React-Bootstrap
  - React-redux
  - Parcel
- - axios
+ - Axios
 
 # How it works?
 

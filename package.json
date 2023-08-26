@@ -19,6 +19,7 @@
   "homepage": "https://github.com/iamnachoj/myFlix-client/dist/index.html",
   "dependencies": {
     "axios": "^0.21.1",
+    "dotenv": "^16.3.1",
     "parcel-bundler": "^1.12.5",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",

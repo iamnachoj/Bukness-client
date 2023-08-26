@@ -33,7 +33,7 @@ class MainView extends React.Component {
   
   getBooks(token){
     axios
-      .get('https://bukness-app.herokuapp.com/API/Books', {headers: { Authorization: `Bearer ${token}`}})
+      .get(`${process.env.URL}/API/Books`, {headers: { Authorization: `Bearer ${token}`}})
       .then(response => {
         this.props.setBooks(response.data);
         console.log(response.data)

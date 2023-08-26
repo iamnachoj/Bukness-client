@@ -19,7 +19,7 @@ export class BookView extends React.Component{
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('Name');
     
-    axios.post(`https://bukness-app.herokuapp.com/users/${username}/books/${this.props.book._id}`, {}, {
+    axios.post(`${process.env.URL}/users/${username}/books/${this.props.book._id}`, {}, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(response => {

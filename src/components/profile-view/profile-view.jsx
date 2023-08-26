@@ -34,7 +34,8 @@ export class ProfileView extends React.Component{
   }
   //GET method 
   getUser(token) {
-    let url = 'https://bukness-app.herokuapp.com/users/' + localStorage.getItem('Name');
+    let url = `${process.env.URL}/users/` + localStorage.getItem('Name');
+      console.log(url)
     axios
         .get(url, {
             headers: { Authorization: `Bearer ${token}` },
@@ -70,7 +71,7 @@ export class ProfileView extends React.Component{
       const token = localStorage.getItem('token');
       const username = localStorage.getItem('Name');
 
-      axios.put(`https://bukness-app.herokuapp.com/users/${username}`, {
+      axios.put(`${process.env.URL}/users/${username}`, {
         headers: { Authorization: `Bearer ${token}` },
         data: {
           Name: newName ? newName : this.state.Name,
@@ -120,7 +121,7 @@ export class ProfileView extends React.Component{
     const username = localStorage.getItem('Name');
 
     axios
-      .delete(`https://bukness-app.herokuapp.com/users/${username}/books/${book._id}`, {
+      .delete(`${process.env.URL}/users/${username}/books/${book._id}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => {
@@ -138,7 +139,7 @@ export class ProfileView extends React.Component{
 
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('user');
-    let url = 'https://bukness-app.herokuapp.com/users/' + localStorage.getItem('Name');
+    let url = `${process.env.URL}/users/` + localStorage.getItem('Name');
 
     axios.delete(url, {
       headers: { Authorization: `Bearer ${token}` },

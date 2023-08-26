@@ -24,7 +24,7 @@ export function RegistrationView(props) {
     setValidated(true);
     e.preventDefault();
     console.log(username, password, email, birthdate);
-    axios.post('https://bukness-app.herokuapp.com/users', {
+    axios.post(`${process.env.URL}/users`, {
       Name: username,
       Password: password,
       Email: email,
